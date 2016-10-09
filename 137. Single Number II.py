@@ -14,7 +14,8 @@ class Solution(object):
             for j in range(len(nums)):
                 bitnum[i] += (nums[j] >> i) & 1
             res |= (bitnum[i] % 3) << i
-            print res
+        if res > 2**31-1:
+            res -= 2**32
         return res
 #
 # int singleNumber(int* nums, int numsSize) {

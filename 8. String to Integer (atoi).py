@@ -10,28 +10,32 @@ class Solution(object):
         if str is None:
             return None
 
-        sign = ('-', '+')
+        sign_tuple = ('-', '+')
         nums = "0123456789"
 
-        seq = list(str)
-        for i in seq:
-            if i == ' ':
-                continue
+        sign = ''
+        num = ''
+        str = str.lstrip()
+        if str:
+            if str[0] in sign_tuple:
+                sign = str[0]
+                str = str[1:]
+            for digit in str:
+                if digit in nums:
+                    num += digit
+                else:
+                    break
+            if num == '':
+                return 0
             else:
-                start = seq.index(i)
-                break
+                if int(sign+num) > 2**31-1:
+                    return 2**31-1
+                elif int(sign+num) < -1*2**31:
+                    return -1*2**31
+                else:
+                    return int(sign+num)
         else:
             return 0
-
-        if seq[start] in sign or seq[start] in nums:
-            for i in seq[start+1:]:
-                if i not in nums:
-                    return int(''.join(seq[start+1:seq.index(i)]))
-            else:
-                return int(''.join(seq[start+1:]))
-        else:
-            return 0
-
 
 s = Solution()
-print s.myAtoi('     +')
+print s.myAtoi("2147483648")

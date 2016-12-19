@@ -19,14 +19,22 @@ class Queue(object):
         """
         :rtype: nothing
         """
-        self._q.pop()
+        if self._q:
+            self._q.pop(0)
 
     def peek(self):
         """
         :rtype: int
         """
+        if self._q:
+            return self._q[0]
 
     def empty(self):
         """
         :rtype: bool
         """
+        return False if self._q else True
+
+
+q = Queue()
+print q.empty()

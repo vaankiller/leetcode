@@ -1,31 +1,16 @@
-__author__ = 'vaan'
-
-
 class Solution(object):
     def isPalindrome(self, s):
         """
         :type s: str
         :rtype: bool
         """
-        if s == "":
-            return True
-
-        s = s.lower()
-        str = ""
-        for i in s:
-            if i.isalpha() or i.isdigit():
-                str += i
-
-        i = 0
-        j = len(str)-1
-        while i < j:
-            if str[i] != str[j]:
-                return False
-            i += 1
-            j -= 1
-
+        string = "".join([i for i in s if i.isalpha() or i.isdigit()])
+        for i in range(len(string)):
+            if i < len(string)-i-1:
+                if string[i].lower() != string[len(string)-i-1].lower():
+                    return False 
         return True
 
 
 s = Solution()
-print s.isPalindrome('a ba')
+print s.isPalindrome("")

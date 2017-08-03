@@ -10,4 +10,8 @@ class Solution(object):
             return self.mySqrt(-x)
         start = 1
         start = (x / start + start) / 2
-        #  Newton's method
+        # TODO: Newton's method
+         
+    def mySqrt2(self, x):
+        import math
+        return int(math.sqrt(x))
